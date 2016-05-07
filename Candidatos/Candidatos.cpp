@@ -5,7 +5,7 @@ using namespace std;
 
 char letra(int n)
 {
-	char letra;
+	char letra='A';
 	switch (n)
 	{
 	case 0:
@@ -29,7 +29,7 @@ char letra(int n)
 int main()
 {
 	int Zonas[5][4], sumascand[5] = { 0,0,0,0,0 }, sumaszonas[5] = { 0,0,0,0,0 },total=0, iPosicion1=0, iPosicion2, iNumeroMayor=0;	
-	bool SegundaVuelta=false;
+	bool SegundaVuelta=true;
 	for (int i = 0; i < 5; i++)
 	{
 		cout << "Zona " << i + 1<<":"<<endl;
@@ -56,35 +56,46 @@ int main()
 	}
 
 	cout << "\n\n\tSuma";
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{		
 		cout << "\t\t" << sumascand[i];
 		if (sumascand[i]>iNumeroMayor) {
-			iNumeroMayor = sumascand[i];
-			iPosicion2 = iPosicion1;
+			iNumeroMayor = sumascand[i];			
 			iPosicion1 = i;			
 		}
 	}
-
+	cout << "\t\t" << sumascand[4];
+	
 	cout << "\n\t%";
 	for (int i = 0; i < 5; i++)
 	{
 		cout << "\t\t" << (sumascand[i]*100)/total<<"%";
-		if ((sumascand[i] * 100) / total < 50)
-		{
-			SegundaVuelta = true;
-		}
+		
 	}
+
+
+	iNumeroMayor = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		if (sumascand[i]>iNumeroMayor && i != iPosicion1) {
+			iNumeroMayor = sumascand[i];
+			iPosicion2 = i;
+		}
+		if (((sumascand[i] * 100) / total) > 50)
+		{
+			SegundaVuelta = false;
+
+		}		
+	}
+
 	
-	cout << "\n\nGANADOR: Candidato "<< letra(iPosicion1-1);
+	cout << "\n\nGANADOR: Candidato "<< letra(iPosicion1);
 
 	if (SegundaVuelta == true)
 	{
-		cout << "\n\nSegunda vuelta entre candidatos " << letra(iPosicion1-1)<<" y "<< letra(iPosicion2-1);
+		cout << "\n\nSegunda vuelta entre candidatos " << letra(iPosicion1)<<" y "<< letra(iPosicion2);
 	}
 	cout << "\n\n";
 	system("pause");
     return 0;
 }
-	
-
