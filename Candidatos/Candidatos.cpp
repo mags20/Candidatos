@@ -1,5 +1,5 @@
-// Candidatos.cpp: define el punto de entrada de la aplicación de consola.
-//
+// Candidatos.cpp: define el punto de entrada de la aplicaciÃ³n de consola.
+//Codigo hecho por Alejandro Gonzalez https://github.com/mags20
 #include <iostream>
 using namespace std;
 
